@@ -35,6 +35,7 @@
           </v-list-tile-action>
           <v-list-tile-title class="grey--text text--darken-1">Browse Channels</v-list-tile-title>
         </v-list-tile>
+        <!-- // eslint-disable-next-line -->
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon color="grey darken-1">settings</v-icon>
@@ -91,32 +92,41 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+  /* eslint-disable */
+  import {
+    VApp, VContent, VContainer, VFlex, VTooltip, VLayout, VBtn, VIcon, VTextField,
+    VSpacer, VNavigationDrawer, VToolbar, VToolbarTitle, VToolbarSideIcon, VList,
+    VListTile, VListGroup, VListTileAction, VListTileActionText, VListTileTitle, VListTileSubTitle,
+    VListTileAvatar, VSubheader, VListTileContent
+  } from 'vuetify/lib'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  data: () => ({
-    drawer: true,
-    items: [
-      { icon: 'trending_up', text: 'Most Popular' },
-      { icon: 'subscriptions', text: 'Subscriptions' },
-      { icon: 'history', text: 'History' },
-      { icon: 'featured_play_list', text: 'Playlists' },
-      { icon: 'watch_later', text: 'Watch Later' }
-    ],
-    items2: [
-      { picture: 28, text: 'Joseph' },
-      { picture: 38, text: 'Apple' },
-      { picture: 48, text: 'Xbox Ahoy' },
-      { picture: 58, text: 'Nokia' },
-      { picture: 78, text: 'MKBHD' }
-    ]
-  }),
-  props: {
-    source: String
+  export default {
+    name: 'App',
+    components: {
+      VApp, VContent, VContainer, VFlex, VTooltip, VLayout, VBtn, VIcon,
+      VTextField, VSpacer, VNavigationDrawer, VToolbar, VToolbarTitle, VToolbarSideIcon, VList,
+      VListTile, VListGroup, VListTileAction, VListTileActionText, VListTileTitle, VListTileSubTitle,
+      VListTileAvatar, VSubheader, VListTileContent
+    },
+    data: () => ({
+      drawer: true,
+      items: [
+        { icon: 'trending_up', text: 'Most Popular' },
+        { icon: 'subscriptions', text: 'Subscriptions' },
+        { icon: 'history', text: 'History' },
+        { icon: 'featured_play_list', text: 'Playlists' },
+        { icon: 'watch_later', text: 'Watch Later' }
+      ],
+      items2: [
+        { picture: 28, text: 'Joseph' },
+        { picture: 38, text: 'Apple' },
+        { picture: 48, text: 'Xbox Ahoy' },
+        { picture: 58, text: 'Nokia' },
+        { picture: 78, text: 'MKBHD' }
+      ]
+    }),
+    props: {
+      source: String
+    }
   }
-}
 </script>
