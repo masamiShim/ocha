@@ -10,7 +10,7 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="item in items" :key="item.text" @click="menumethod(`{{item.method}}`)">
+        <v-list-tile v-for="item in items" :key="item.text" @click="">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -111,7 +111,6 @@
     data: () => ({
       drawer: true,
       items: [
-        { icon: 'home', text: 'home', method: 'home' },
         { icon: 'trending_up', text: 'Most Popular' },
         { icon: 'subscriptions', text: 'Subscriptions' },
         { icon: 'history', text: 'History' },
@@ -126,17 +125,8 @@
         { picture: 78, text: 'MKBHD' }
       ]
     }),
-    methods: {
-      menumethod: function() {
-        menu();
-      }
-    },
     props: {
       source: String
     }
-  }
-
-  function menu() {
-    alert();
   }
 </script>
