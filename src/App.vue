@@ -10,7 +10,7 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="item in items" :key="item.text" @click="">
+        <v-list-tile v-for="item in items" :key="item.text" @click="transPage(item.path)">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -69,24 +69,7 @@
       </v-layout>
     </v-toolbar>
     <v-content>
-      <v-container fill-height>
-        <v-layout justify-center align-center>
-          <v-flex shrink>
-            <v-tooltip right>
-              <v-btn
-                icon
-                large
-                :href="source"
-                target="_blank"
-                slot="activator"
-              >
-                <v-icon large>code</v-icon>
-              </v-btn>
-              <span>Source</span>
-            </v-tooltip>
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <router-view />
     </v-content>
   </v-app>
 </template>
@@ -108,14 +91,18 @@
       VListTile, VListGroup, VListTileAction, VListTileActionText, VListTileTitle, VListTileSubTitle,
       VListTileAvatar, VSubheader, VListTileContent
     },
+    props: {
+      source: String
+    },
     data: () => ({
       drawer: true,
       items: [
-        { icon: 'trending_up', text: 'Most Popular' },
-        { icon: 'subscriptions', text: 'Subscriptions' },
-        { icon: 'history', text: 'History' },
-        { icon: 'featured_play_list', text: 'Playlists' },
-        { icon: 'watch_later', text: 'Watch Later' }
+        { icon: 'trending_up', text: 'Most Popular', path: '/' },
+        { icon: 'subscriptions', text: 'Subscriptions', path: '/' },
+        { icon: 'history', text: 'History', path: '/' },
+        { icon: 'featured_play_list', text: 'Playlists', path: '/' },
+        { icon: 'watch_later', text: 'Watch Later', path: '/' },
+        { icon: 'edit', text: 'プロフィール編集', path: '/profile/edit' }
       ],
       items2: [
         { picture: 28, text: 'Joseph' },
@@ -125,8 +112,16 @@
         { picture: 78, text: 'MKBHD' }
       ]
     }),
-    props: {
-      source: String
+    methods: {
+      transPage(path) {
+        // TODO: これにuserIdみたいなんのっければ良さそう
+        console.log(this.$router.currentRoute)
+        if(this.$router.currentRoute.path === path){
+          this.drawer = !this.drawer
+          return
+        }
+        this.$router.push(path)
+      }
     }
   }
 </script>
